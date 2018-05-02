@@ -101,8 +101,7 @@ func NewApp(gitCommit, usage string) *cli.App {
 	if gitCommit != "" {
 		if len(gitCommit)>8 {
 			app.Version += "-" + gitCommit[:8]
-		}
-		else {
+		} else {
 			app.Version += "-" + gitCommit
 		}
 	}
