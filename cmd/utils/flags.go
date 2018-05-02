@@ -94,8 +94,17 @@ func NewApp(gitCommit, usage string) *cli.App {
 	//app.Authors = nil
 	app.Email = ""
 	app.Version = params.Version
+
+	logger := log.New("flags", 0)
+	logger.Info("NewApp GitCommit is "+gitCommit)
+
 	if gitCommit != "" {
-		app.Version += "-" + gitCommit[:8]
+		if len(gitCommit)>8 {
+			app.Version += "-" + gitCommit[:8]
+		}
+		else {
+			app.Version += "-" + gitCommit
+		}
 	}
 	app.Usage = usage
 	return app
